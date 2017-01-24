@@ -1,0 +1,16 @@
+http://www.grantgibson.co.uk/2012/04/how-to-get-started-with-the-mifare-mf522-an-and-arduino/
+
+https://sites.google.com/site/arduinomega2560projects/home/level-1/arduino-rfid-rc522
+
+http://forum.arduino.cc/index.php?topic=256260
+
+https://github.com/omersiar/RFID522-Door-Unlock
+
+http://www.nxp.com/documents/data_sheet/MFRC522.pdf
+
+https://github.com/nadam/nfc-reader
+https://github.com/skjolber/Fagmote/tree/master/Android/Near%20Field%20Communications
+https://github.com/Dimasdanz/KendaliPintuArduino
+
+http://www.lynxmotion.com/images/html/build185.htm
+https://create.arduino.cc/projecthub/user8523373/rfid-based-automatic-door-system-7b2065?ref=search&ref_id=rfid&offset=4
