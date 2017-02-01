@@ -14,3 +14,14 @@ https://github.com/Dimasdanz/KendaliPintuArduino
 
 http://www.lynxmotion.com/images/html/build185.htm
 https://create.arduino.cc/projecthub/user8523373/rfid-based-automatic-door-system-7b2065?ref=search&ref_id=rfid&offset=4
+
+https://github.com/googlesamples/android-CardEmulation
+
+https://github.com/grundid/host-card-emulation-sample
+
+https://developer.android.com/guide/topics/connectivity/nfc/hce.html#HceServices
+https://github.com/miguelbalboa/rfid
+https://github.com/elechouse/PN532
+https://github.com/don/NDEF
+http://www.canadarobotix.com/rf-data/2072
+http://rdiot.tistory.com/173
