@@ -8,8 +8,8 @@ NFC_Module nfc;
 // create servo object to control a servo
 Servo myservo_9;
 
-
 int start_deg = 180;
+int fully_down_deg = 0;
 int last_deg = 0;
 bool lock_down = false;
 
@@ -41,11 +41,11 @@ void setup(void)
   }
 
   // Got ok data, print it out!
-  Serial.print("Found chip PN5"); Serial.println((versiondata>>24) & 0xFF, HEX);
-  Serial.print("Firmware ver. "); Serial.print((versiondata>>16) & 0xFF, DEC);
-  Serial.print('.'); Serial.println((versiondata>>8) & 0xFF, DEC);
+  Serial.print("Found chip PN5"); Serial.println((versiondata >> 24) & 0xFF, HEX);
+  Serial.print("Firmware ver. "); Serial.print((versiondata >> 16) & 0xFF, DEC);
+  Serial.print('.'); Serial.println((versiondata >> 8) & 0xFF, DEC);
 
-  Serial.println('Starting locking program');
+  Serial.println("Starting locking program");
 
   pinMode(inPin, INPUT);    // declare pushbutton as input
   pinMode(inPin_2, INPUT);    // declare pushbutton as input
@@ -56,21 +56,10 @@ void setup(void)
   nfc.SAMConfiguration();
 }
 
-// TODO:
-// - Push button (IR sensor) to know if there's a bike there
-//     - Only engage NFC and entire system if this sensor reads true
-// - Push button (touch sensor) to know if there is some interference
-//   between the rod and the bike
-// - Step motor in degree increments and each iteration read from
-//   sensor to see if there is some interference.
-//     - if there's interference, stop motor and reverse it
-//     - else, possibly read sensor again and engage
-//       the second motor
-
 void loop(void)
 {
 
-  u8 buf[32],sta;
+  u8 buf[32], sta;
 
   val = digitalRead(inPin);
   val_2 = digitalRead(inPin_2);
@@ -87,14 +76,14 @@ void loop(void)
 
       /** the card may be Mifare Classic card, try to read the block */
       String UUID = "";
-      UUID = nfc.getdec(buf+1, buf[0]);
+      UUID = nfc.getdec(buf + 1, buf[0]);
 
       if (UUID == "23039104123") {
 
         Serial.println("GOT THE FOB, engaging system");
 
         if (lock_down) {
-          
+
           Serial.println("Unlocking bike");
           for (int j = 0; j <= start_deg; j++) {
 
@@ -112,7 +101,7 @@ void loop(void)
 
             val_2 = digitalRead(inPin_2);
             if (val_2 == HIGH) {
-              
+
               Serial.println("----INTERFERENCE DETECTED-----");
               delay(100);
               reverse_lock();
@@ -121,8 +110,8 @@ void loop(void)
           }
 
           int down_deg = myservo_9.read();
-//          Serial.println((String)down_deg);
-          if (down_deg == 0) {
+          //          Serial.println((String)down_deg);
+          if (down_deg == fully_down_deg) {
 
             lock_down = true;
           }
