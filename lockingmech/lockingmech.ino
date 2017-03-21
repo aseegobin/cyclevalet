@@ -9,14 +9,13 @@ NFC_Module nfc;
 Servo myservo_9;
 
 int start_deg = 180;
-int fully_down_deg = 0;
+int fully_down_deg = 90;
 int last_deg = 0;
 bool lock_down = false;
 
 // Input pin declaration
 int pirPin = 3;
 int intSwitchPin = 2;
-
 // Variable storage for input value
 int pirReadVal = 0;
 int intSwitchReadVal = 0;
@@ -48,10 +47,10 @@ void setup(void)
 
   //give the sensor some time to calibrate
   Serial.print("calibrating sensor ");
-    for(int i = 0; i < calibrationTime; i++){
-      Serial.print(".");
-      delay(1000);
-    }
+  for(int i = 0; i < calibrationTime; i++){
+    Serial.print(".");
+    delay(1000);
+  }
   Serial.println(" done");
   Serial.println("SENSOR ACTIVE");
 
@@ -95,7 +94,7 @@ void loop(void)
         if (lock_down) {
 
           Serial.println("Unlocking bike");
-          for (int j = 0; j <= start_deg; j++) {
+          for (int j = fully_down_deg; j <= start_deg; j++) {
 
             myservo_9.write(j);
             delay(50);
@@ -104,7 +103,7 @@ void loop(void)
         } else {
 
           Serial.println("Locking bike");
-          for (int i = start_deg; i >= 0; i--) {
+          for (int i = start_deg; i >= fully_down_deg; i--) {
 
             myservo_9.write(i);
             delay(50);
