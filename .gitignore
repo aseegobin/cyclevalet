@@ -1,0 +1,13 @@
+CycleValetAndroid/.gradle
+CycleValetAndroid/.idea
+CycleValetAndroid/*.iml
+CycleValetAndroid/local.properties
+CycleValetAndroid/.DS_Store
+CycleValetAndroid/build
+CycleValetAndroid/gradle
+CycleValetAndroid/captures
+CycleValetAndroid/.externalNativeBuild
+
+// app directory
+CycleValetAndroid/app/proguard-rules.pro
+CycleValetAndroid/Application/build
